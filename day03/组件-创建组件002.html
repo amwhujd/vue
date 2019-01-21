@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div class="app">
+        <mycom></mycom>
+    </div>
+    <script>
+        Vue.component('mycom',{
+            template: '<div><h1>这是使用component直接创建的组件</h1><span>11243</span></div>',
+        })
+        new Vue({
+            el: '.app',
+            data: {},
+            methods: {
+                
+            },
+        })
+    </script>
+</body>
+</html>
