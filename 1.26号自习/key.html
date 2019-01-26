@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div class="app">
+        <div>
+            不要key的情况:
+            <br>
+            用户名: <input type="text" v-for="flag">
+            邮箱: <input type="text" v-else>
+        </div>
+
+    </div>
+    <script>
+        new Vue({
+            el: '.app',
+            data: {
+                flag: true
+            },
+            methods: {
+                change(){
+                    setTimeout(() =>{
+                        this.flag=false
+                    },1000)
+                }
+            },
+            mounted() {
+                this.change();
+            },
+        })
+    </script>
+</body>
+</html>

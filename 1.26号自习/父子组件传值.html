@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <h2>不用v-bind绑定传值</h2>
+        <item content="hello world"></item>
+        <item2 num='1'></item2>
+
+        <hr>
+        <h2>用v-bind绑定传值</h2>
+        <item :content="msg"></item>
+        <item2 :content="nums"></item2>
+    </div>
+    <script>
+        var item = {
+            props: ['content'],
+            template: '<div>我是组件1{{this.content}}</div>',
+        methods: {
+                types() {
+                    console.log(typeof (this.content))
+                }
+            },
+            created() {
+                this.types()
+            },
+        }
+
+        var item2 = {
+            template: '<div>我是组件2{{this.content}}</div>',
+            methods: {
+                types() {
+                    console.log(typeof (this.content))
+                }
+            },
+            created() {
+                this.types()
+            },
+        }
+    
+        new Vue({
+            el: '.app',
+            data: {
+                msg: '你好!',
+                nums: '大家好'
+            },
+            components: {
+                item: item,
+                item2: item2
+            }
+        })
+    </script>
+</body>
+
+</html>

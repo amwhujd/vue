@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div class="app">
+        <item ref="item"></item>
+
+        <div>{{total}}</div>
+        <button @click="change">点击</button>
+    </div>
+    <script>
+        Vue.component('item',{
+           data(){
+               return {
+                   num: 'ref组件的使用'
+                }
+            },
+            template: '<div>{{num}}</div>'
+        })
+    new Vue({
+        el: '.app',
+        data: {
+            total:''
+        },
+        methods: {
+            change(){
+                console.log(this.$refs.item);
+                this.total=this.$refs.item.num + "获取到值了"
+            }
+        },
+    })
+    </script>
+</body>
+</html>

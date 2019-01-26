@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div class="app">
+        <h2>父子组件传值用v-bind绑定传值</h2>
+        <item :content="msg"></item>
+        <item1 :content="nums"></item1>
+    </div>
+    <script>
+         var item = {
+             data() {
+                 return {
+                     itemx:this.content,
+                     num:1
+                 }
+             },
+            props: ['content'],
+            template: `<div @click='change'>我是组件1{{itemx}}</div>`,
+        methods: {
+                change(){
+                    this.itemx="你好呀"
+                } 
+            }
+         }
+
+         var item1 = {
+            props: ['content'],
+            template: '<div>我是组件2{{this.content}}</div>',
+        methods: {
+              
+            }
+         }
+
+         new Vue({
+             el: '.app',
+             data:{
+                 msg:'你好',
+                 nums:10
+             },
+             components:{
+                item:item,
+                item1:item1
+             }
+         })
+    </script>
+</body>
+</html>
